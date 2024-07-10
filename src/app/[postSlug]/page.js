@@ -2,7 +2,7 @@ import React from "react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 import BlogHero from "@/components/BlogHero";
-import { loadBlogPost } from "@/helpers/file-helpers";
+import { getBlogPostList, loadBlogPost } from "@/helpers/file-helpers";
 
 import styles from "./postSlug.module.css";
 
@@ -19,6 +19,13 @@ async function BlogPost({ params }) {
       </div>
     </article>
   );
+}
+
+export async function generateStaticParams() {
+  const posts = await getBlogPostList();
+  return posts.map(({slug}) => ({
+    postSlug: slug,
+  }));
 }
 
 export default BlogPost;
