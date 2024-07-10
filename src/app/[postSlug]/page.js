@@ -10,8 +10,8 @@ import { BLOG_TITLE } from "@/constants";
 export async function generateMetadata({ params }) {
   const { frontmatter } = await loadBlogPost(params.postSlug);
   return {
-    title: frontmatter.title,
-    description: `${frontmatter.abstract} · ${BLOG_TITLE}`,
+    title: `${frontmatter.title} · ${BLOG_TITLE}`,
+    description: frontmatter.abstract,
   };
 }
 
