@@ -1,12 +1,9 @@
 import React from "react";
-import dynamic from "next/dynamic";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 import BlogHero from "@/components/BlogHero";
 import CodeSnippet from "@/components/CodeSnippet";
-const DivisionGroupsDemo = dynamic(() =>
-  import("@/components/DivisionGroupsDemo")
-);
+import DivisionGroupsDemo from "@/components/DivisionGroupsDemo";
 import { getBlogPostList, loadBlogPost } from "@/helpers/file-helpers";
 
 import styles from "./postSlug.module.css";
