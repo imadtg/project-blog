@@ -6,6 +6,14 @@ import { getBlogPostList, loadBlogPost } from "@/helpers/file-helpers";
 
 import styles from "./postSlug.module.css";
 
+export async function generateMetadata({ params }) {
+  const { frontmatter } = await loadBlogPost(params.postSlug);
+  return {
+    title: frontmatter.title,
+    description: frontmatter.abstract,
+  };
+}
+
 async function BlogPost({ params }) {
   const post = await loadBlogPost(params.postSlug);
   return (
@@ -15,7 +23,7 @@ async function BlogPost({ params }) {
         publishedOn={post.frontmatter.publishedOn}
       />
       <div className={styles.page}>
-        <MDXRemote source={post.content}/>
+        <MDXRemote source={post.content} />
       </div>
     </article>
   );
@@ -23,7 +31,7 @@ async function BlogPost({ params }) {
 
 export async function generateStaticParams() {
   const posts = await getBlogPostList();
-  return posts.map(({slug}) => ({
+  return posts.map(({ slug }) => ({
     postSlug: slug,
   }));
 }
