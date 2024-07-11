@@ -77,7 +77,7 @@ function DivisionGroupsDemo({
 
             {range(
               numOfGroups * numOfItemsPerGroup,
-              numOfGroups * numOfItemsPerGroup + remainder
+              numOfItems
             ).reverse().map((index) => {
               const itemId = `${id}-${index}`;
               return (
