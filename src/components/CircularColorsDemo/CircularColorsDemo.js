@@ -42,6 +42,9 @@ function useTimeElapsed(
     }
   }
   function toggleTimeLapse() {
+    if (isPaused) {
+      setTimeElapsed(timeElapsed + 1);
+    }
     setIsPaused(!isPaused);
   }
   return {
