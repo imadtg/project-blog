@@ -1,11 +1,9 @@
 "use client";
-import { set } from "date-fns";
-import { settings } from "eslint-config-next";
 import React from "react";
 
 export const ThemeContext = React.createContext();
 
-function ThemeProvider({ initialTheme="light" }) {
+function ThemeProvider({ children, initialTheme="light" }) {
     const [theme, setTheme] = React.useState(initialTheme);
     
     function toggleTheme(){
