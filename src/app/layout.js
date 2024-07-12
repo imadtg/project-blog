@@ -10,6 +10,7 @@ import "./styles.css";
 import RespectMotionPreferences from "./RespectMotionPrefrences";
 import ThemeProvider from "./ThemeProvider";
 import ThemedHtml from "./ThemedHtml";
+import { cookies } from "next/headers";
 
 const mainFont = Work_Sans({
   subsets: ["latin"],
@@ -30,7 +31,8 @@ export const metadata = {
 };
 
 function RootLayout({ children }) {
-  const theme = "light";
+  const theme = cookies().get("color-theme")?.value || "light";
+  console.log(theme);
 
   return (
     <ThemeProvider initialTheme={theme}>
