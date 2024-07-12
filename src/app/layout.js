@@ -41,7 +41,7 @@ function RootLayout({ children }) {
           className={clsx(mainFont.variable, monoFont.variable)}
         >
           <body>
-            <Header theme={theme} />
+            <Header />
             <main>{children}</main>
             <Footer />
           </body>
