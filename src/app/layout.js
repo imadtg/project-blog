@@ -32,7 +32,6 @@ export const metadata = {
 
 function RootLayout({ children }) {
   const theme = cookies().get("color-theme")?.value || "light";
-  console.log(theme);
 
   return (
     <ThemeProvider initialTheme={theme}>
