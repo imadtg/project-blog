@@ -7,9 +7,16 @@ import { getBlogPostList, loadBlogPost } from "@/helpers/file-helpers";
 import styles from "./postSlug.module.css";
 import { BLOG_TITLE } from "@/constants";
 import COMPONENT_MAP from "@/helpers/mdx-components";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
-  const { frontmatter } = await loadBlogPost(params.postSlug);
+  let frontmatter;
+  try {
+    const post = await loadBlogPost(params.postSlug);
+    frontmatter = post.frontmatter;
+  } catch {
+    return;
+  }
   return {
     title: `${frontmatter.title} · ${BLOG_TITLE}`,
     description: frontmatter.abstract,
@@ -17,7 +24,15 @@ export async function generateMetadata({ params }) {
 }
 
 async function BlogPost({ params }) {
-  const post = await loadBlogPost(params.postSlug);
+  let post;
+  try {
+    post = await loadBlogPost(params.postSlug);
+  } catch {
+    notFound();
+  }
+  if (!post) {
+    notFound();
+  }
   return (
     <article className={styles.wrapper}>
       <BlogHero
@@ -25,10 +40,7 @@ async function BlogPost({ params }) {
         publishedOn={post.frontmatter.publishedOn}
       />
       <div className={styles.page}>
-        <MDXRemote
-          source={post.content}
-          components={COMPONENT_MAP}
-        />
+        <MDXRemote source={post.content} components={COMPONENT_MAP} />
       </div>
     </article>
   );
