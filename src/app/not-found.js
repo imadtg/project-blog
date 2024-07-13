@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { BLOG_TITLE } from '@/constants';
 
-import styles from "./notfound.module.css";
+import styles from './not-found.module.css';
+
+export const metadata = {
+  title: `404 Not found • ${BLOG_TITLE}`,
+};
 
 export default function NotFound() {
   return (
