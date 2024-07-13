@@ -1,6 +1,5 @@
 export const BLOG_TITLE = 'Bits & Bytes';
 export const BLOG_DESCRIPTION = "A wonderful blog about JavaScript";
-export const DOMAIN = "localhost"
 export const AUTHOR = "Josh W. Comeau"
 
 export const LIGHT_COLORS = {
