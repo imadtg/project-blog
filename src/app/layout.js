@@ -2,7 +2,7 @@ import React from "react";
 import { Work_Sans, Spline_Sans_Mono } from "next/font/google";
 import clsx from "clsx";
 
-import { BLOG_TITLE } from "@/constants";
+import { BLOG_TITLE, BLOG_DESCRIPTION } from "@/constants";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,7 +27,7 @@ const monoFont = Spline_Sans_Mono({
 
 export const metadata = {
   title: BLOG_TITLE,
-  description: "A wonderful blog about JavaScript",
+  description: BLOG_DESCRIPTION,
 };
 
 function RootLayout({ children }) {
