@@ -9,16 +9,16 @@ export async function GET() {
   const feed = new RSS({
     title: BLOG_TITLE,
     description: BLOG_DESCRIPTION,
-    site_url: `https://${domain}/`,
-    feed_url: `https://${domain}/rss.xml`,
+    site_url: `https://www.${domain}/`,
+    feed_url: `https://www.${domain}/rss.xml`,
   });
   const posts = await getBlogPostList();
   posts.forEach(({ slug, title, abstract, publishedOn }) =>
     feed.item({
       title,
       description: abstract,
-      url: `https://${domain}/${slug}/`,
-      guid: `https://${domain}/${slug}/`,
+      url: `https://www.${domain}/${slug}/`,
+      guid: `https://www.${domain}/${slug}/`,
       author: AUTHOR,
       date: publishedOn,
     })
