@@ -17,7 +17,7 @@ function Header({ className, ...delegated }) {
       <Logo />
 
       <div className={styles.actions}>
-        <button className={styles.action}>
+        <a href="/rss.xml" className={styles.action}>
           <Rss
             size="1.5rem"
             style={{
@@ -28,7 +28,7 @@ function Header({ className, ...delegated }) {
           <VisuallyHidden>
             View RSS feed
           </VisuallyHidden>
-        </button>
+        </a>
         <ColorThemeToggle />
       </div>
     </header>
